@@ -1,0 +1,330 @@
+:root {
+  --primary: #f9ff87;
+  --secondary: #ff3b80;
+  --ink: #1a1020;
+  --ink-soft: rgba(26, 16, 32, 0.72);
+  --logo-size: 5.9375rem;
+
+  --font-display: 'Chewy', system-ui, sans-serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.25rem;
+  --max-width: 36rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  text-align: center;
+  background: var(--primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+/* PlayStation-style idle mesh */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--primary) 55%, var(--secondary));
+}
+
+.bg__blob {
+  position: absolute;
+  width: 85vmax;
+  height: 85vmax;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.95;
+  will-change: transform;
+}
+
+.bg__blob--a {
+  top: -30%;
+  left: -25%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    var(--primary) 0%,
+    color-mix(in srgb, var(--primary) 40%, var(--secondary)) 45%,
+    transparent 70%
+  );
+  animation: drift-a 22s ease-in-out infinite alternate;
+}
+
+.bg__blob--b {
+  top: 10%;
+  right: -35%;
+  width: 95vmax;
+  height: 95vmax;
+  background: radial-gradient(
+    circle at 50% 50%,
+    var(--secondary) 0%,
+    color-mix(in srgb, var(--secondary) 55%, var(--primary)) 40%,
+    transparent 68%
+  );
+  animation: drift-b 28s ease-in-out infinite alternate;
+}
+
+.bg__blob--c {
+  bottom: -40%;
+  left: 15%;
+  width: 80vmax;
+  height: 80vmax;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in srgb, var(--primary) 70%, #fff) 0%,
+    var(--secondary) 38%,
+    transparent 70%
+  );
+  animation: drift-c 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift-a {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(18vw, 22vh, 0) scale(1.18);
+  }
+}
+
+@keyframes drift-b {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  to {
+    transform: translate3d(-22vw, 12vh, 0) scale(1.22);
+  }
+}
+
+@keyframes drift-c {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-10vw, -20vh, 0) scale(1.28);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg__blob {
+    animation: none;
+  }
+}
+
+.motion-off .bg__blob {
+  animation: none;
+}
+
+.page {
+  width: min(100% - 1.5rem, var(--max-width));
+  height: 100dvh;
+  margin-inline: auto;
+  padding-block: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 0;
+}
+
+.promo__media {
+  width: 100%;
+  flex: 0 1 auto;
+  min-height: 0;
+  max-height: 42dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.promo__video {
+  width: 100%;
+  max-height: 42dvh;
+  height: auto;
+  border-radius: 1rem;
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 0 2px var(--ink),
+    0 10px 24px rgba(26, 16, 32, 0.2);
+  background: var(--ink);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.page__copy {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.page__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 9vw, 3rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  margin: 0;
+  color: #fff;
+  -webkit-text-stroke: 0.09em #000;
+  paint-order: stroke fill;
+  text-shadow:
+    0 3px 0 #000,
+    0 4px 10px rgba(0, 0, 0, 0.28);
+}
+
+.page__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 4.4vw, 1.35rem);
+  font-weight: 400;
+  color: #fff;
+  max-width: 24rem;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  -webkit-text-stroke: 0.07em #000;
+  paint-order: stroke fill;
+  text-shadow: 0 2px 0 #000;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.btn--join {
+  color: #fff;
+  -webkit-text-stroke: 0.06em #000;
+  paint-order: stroke fill;
+  text-shadow: 0 2px 0 #000;
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    color-mix(in srgb, var(--primary) 45%, var(--secondary)) 48%,
+    var(--secondary) 100%
+  );
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 0 3px var(--ink),
+    0 8px 0 color-mix(in srgb, var(--secondary) 55%, var(--ink)),
+    0 14px 24px rgba(26, 16, 32, 0.2);
+}
+
+.btn--join:hover,
+.btn--join:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow:
+    0 0 0 3px var(--ink),
+    0 10px 0 color-mix(in srgb, var(--secondary) 55%, var(--ink)),
+    0 18px 28px rgba(26, 16, 32, 0.24);
+}
+
+.btn--join:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 0 0 3px var(--ink),
+    0 4px 0 color-mix(in srgb, var(--secondary) 55%, var(--ink)),
+    0 8px 16px rgba(26, 16, 32, 0.18);
+}
+
+.site-logo {
+  flex: 0 0 auto;
+  display: block;
+  width: var(--logo-size);
+}
+
+.site-logo__img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 0 2px var(--ink),
+    0 8px 20px rgba(26, 16, 32, 0.22);
+  background: color-mix(in srgb, var(--primary) 35%, #fff);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --max-width: 42rem;
+    --logo-size: 6.875rem;
+  }
+
+  .page {
+    padding-block: 1.25rem 1.5rem;
+  }
+
+  .page__tagline {
+    font-size: 1.35rem;
+    max-width: 24rem;
+  }
+}
+
+@media (max-height: 700px) {
+  :root {
+    --logo-size: 4.75rem;
+  }
+
+  .page__title {
+    font-size: 1.65rem;
+  }
+
+  .page__tagline {
+    font-size: 1rem;
+  }
+
+  .btn {
+    min-height: 2.6rem;
+    padding: 0.55rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+.vscode/
+.idea/
+
+# Source master — ship compressed public/promo.mp4 instead
+grand prix promo final.mp4

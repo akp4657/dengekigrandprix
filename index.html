@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Dengeki Grand Prix — monthly PC tournament series."
+    />
+    <meta name="theme-color" content="#ff3b80" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <title>Dengeki Grand Prix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chewy&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg" aria-hidden="true">
+      <div class="bg__blob bg__blob--a"></div>
+      <div class="bg__blob bg__blob--b"></div>
+      <div class="bg__blob bg__blob--c"></div>
+    </div>
+
+    <main class="page">
+      <div class="promo__media">
+        <video
+          class="promo__video"
+          poster="/promo-poster.jpg"
+          width="1280"
+          height="720"
+          autoplay
+          muted
+          loop
+          playsinline
+          webkit-playsinline
+          preload="auto"
+          aria-label="Dengeki Grand Prix promo video"
+        >
+          <source src="/promo.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="page__copy">
+        <h1 class="page__title">Dengeki Grand Prix</h1>
+        <p class="page__tagline">
+          A monthly month-long event!<br />
+          Two FT3 sets a week culminating in a FT7 Finals between two pool
+          winners!
+        </p>
+        <a
+          class="btn btn--join"
+          href="https://discord.gg/PLACEHOLDER"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Join the Discord!
+        </a>
+      </div>
+
+      <picture class="site-logo">
+        <source srcset="/logo.webp" type="image/webp" />
+        <img
+          class="site-logo__img"
+          src="/logo.png"
+          width="720"
+          height="720"
+          alt="Dengeki Grand Prix"
+          decoding="async"
+        />
+      </picture>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
