@@ -3,13 +3,13 @@ import './style.css'
 document.documentElement.classList.add('js')
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-const blobs = document.querySelectorAll('.bg__blob')
+const motionNodes = document.querySelectorAll('.bg__blob, .commball')
 const promo = document.querySelector('.promo__video')
 
-function setGradientMotion(enabled) {
+function setMotion(enabled) {
   document.documentElement.classList.toggle('motion-off', !enabled)
-  blobs.forEach((blob) => {
-    blob.style.animationPlayState = enabled ? 'running' : 'paused'
+  motionNodes.forEach((node) => {
+    node.style.animationPlayState = enabled ? 'running' : 'paused'
   })
 }
 
@@ -38,7 +38,7 @@ function onFirstGesture() {
   window.removeEventListener('keydown', onFirstGesture)
 }
 
-setGradientMotion(!reduceMotion.matches)
+setMotion(!reduceMotion.matches)
 tryPlayPromo()
 
 if (promo) {
@@ -50,6 +50,6 @@ if (promo) {
 }
 
 reduceMotion.addEventListener('change', (event) => {
-  setGradientMotion(!event.matches)
+  setMotion(!event.matches)
   tryPlayPromo()
 })
