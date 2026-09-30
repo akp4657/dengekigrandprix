@@ -242,6 +242,7 @@ a {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  transform: translateY(-2px);
   border-radius: 1rem;
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   mask-image: radial-gradient(white, black);
